@@ -4,9 +4,9 @@ import boto3
 from botocore.exceptions import ClientError
 import pprint
 
-from cli.function_display import CLIFunctionDisplay
-from cli.function_select import CLIFunctionSelect
-from data.Function import Function
+from cyclops.cli.function_display import CLIFunctionDisplay
+from cyclops.cli.function_select import CLIFunctionSelect
+from cyclops.data.Function import Function
 
 LOGGER = logging.getLogger(__name__)
 LOGGER.setLevel(logging.INFO)
