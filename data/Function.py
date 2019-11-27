@@ -15,6 +15,15 @@ class Function:
 
         return response
 
+    def remove_permission(self, client, statement_id, **kwargs):
+        response = client.remove_permission(
+            FunctionName=self.FunctionName,
+            StatementId=statement_id,
+            **kwargs
+        )
+
+        return response
+
     def create_alias(self, client, name, function_version, **kwargs):
         response = client.create_alias(
             FunctionName=self.FunctionName,
@@ -61,15 +70,6 @@ class Function:
             FunctionName=self.FunctionName,
             LayerName=layer_name,
             VersionNumber=version_number,
-            StatementId=statement_id,
-            **kwargs
-        )
-
-        return response
-
-    def remove_permission(self, client, statement_id, **kwargs):
-        response = client.remove_permission(
-            FunctionName=self.FunctionName,
             StatementId=statement_id,
             **kwargs
         )

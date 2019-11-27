@@ -19,10 +19,18 @@ ui = {
     'name': 'operation',
     'validate': lambda answer: 'You must choose an operation.' if len(answer) == 0 else True,
     'choices': [
-        {'name': '../'},
+        {'name': '<- Back'},
         {'name': 'Invoke'},
-        {'name': 'Delete'},
-        {'name': 'Quit'}
+        {'name': 'Show Environment Variables'},
+        {'name': 'Add Permission'},
+        {'name': 'Remove Permission'},
+        {'name': 'Create Alias'},
+        {'name': 'Delete Alias'},
+        {'name': 'Delete Function'},
+        {'name': 'Publish Version'},
+        {'name': 'Put Function Concurrency'},
+        {'name': 'Remove Layer Version Permission'},
+        {'name': '<- Quit'}
     ]
 }
 
