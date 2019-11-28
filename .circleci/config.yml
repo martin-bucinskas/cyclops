@@ -1,4 +1,4 @@
-version: 3
+version: 2.1
 jobs:
   build:
     docker:
@@ -41,7 +41,6 @@ orbs:
   sonarcloud: sonarsource/sonarcloud@1.0.1
 
 workflows:
-  version: 2
   build-and-test:
     jobs:
       - build:
