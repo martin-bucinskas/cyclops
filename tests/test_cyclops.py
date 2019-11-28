@@ -53,7 +53,3 @@ def test_get_all_lambdas_status_internal_server_error():
     function_list = get_all_lambdas(f1)
 
     assert len(function_list) == 0
-
-
-def test_main():
-    assert 1 == 1
