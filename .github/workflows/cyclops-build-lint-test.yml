@@ -37,10 +37,10 @@ jobs:
           pytest --cov=./ --cov-report=xml
 
       - name: Codecov
-          uses: codecov/codecov-action@v1.0.4
-          with:
-            token: ${{ secrets.CODECOV_TOKEN }}
-            file: ./coverage.xml
-            flags: unittests
-            name: codecov-cyclops
-            yml: ./codecov.yml
+        uses: codecov/codecov-action@v1.0.4
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          file: ./coverage.xml
+          flags: unittests
+          name: codecov-cyclops
+          yml: ./codecov.yml
