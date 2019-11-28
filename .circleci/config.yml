@@ -45,6 +45,3 @@ workflows:
     jobs:
       - build:
           context: SonarCloud
-          filters:
-            branches:
-              only: master
