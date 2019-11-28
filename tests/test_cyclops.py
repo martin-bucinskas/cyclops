@@ -1,4 +1,5 @@
 import pytest
+from unittest.mock import patch
 
 from cyclops.data.Function import Function
 from cyclops.cyclops import function_list_to_map, get_all_lambdas
@@ -52,7 +53,3 @@ def test_get_all_lambdas_status_internal_server_error():
     function_list = get_all_lambdas(f1)
 
     assert len(function_list) == 0
-
-
-def test_main():
-    pass

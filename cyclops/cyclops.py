@@ -31,17 +31,19 @@ def function_list_to_map(function_list):
     return function_map
 
 
-def main(aws_profile_name):
-    session = boto3.Session(profile_name=aws_profile_name, region_name='eu-west-1')
+def get_lambda_client(aws_profile_name, region_name='eu-west-1'):
+    session = boto3.Session(profile_name=aws_profile_name, region_name=region_name)
     lambda_client = session.client('lambda')
+
+    return lambda_client
+
+
+def main(aws_profile_name):
+    lambda_client = get_lambda_client(aws_profile_name)
     response_list_functions = lambda_client.list_functions()
 
     function_list = get_all_lambdas(response_list_functions)
     function_map = function_list_to_map(function_list)
-
-    cli_function_select = CLIFunctionSelect(function_list)
-    user_selected_lambda = cli_function_select.display()
-    obj_function = function_map.get(user_selected_lambda)
 
     while True:
         cli_function_select = CLIFunctionSelect(function_list)
