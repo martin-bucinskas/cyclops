@@ -15,3 +15,8 @@ python main.py --profile <YOUR_AWS_PROFILE>
 
 Replace the `<YOUR_AWS_PROFILE>` with any profile that has been provided in your aws `credentials` file.
 You can usually find your `credentials` file here `~/.aws/credentials`.
+
+## CI, CD and Coverage
+
+You can find the code coverage at the [codecov.io](https://codecov.io/github/martin-bucinskas/cyclops).
+If the code coverage drops, the build should fail immediately.
