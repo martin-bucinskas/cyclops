@@ -1,5 +1,4 @@
 import logging
-import argparse
 import boto3
 from botocore.exceptions import ClientError
 import pprint
@@ -12,10 +11,9 @@ LOGGER = logging.getLogger(__name__)
 LOGGER.setLevel(logging.INFO)
 
 
-def get_all_lambdas(lambda_client):
-    response = lambda_client.list_functions()
-    response_metadata = response['ResponseMetadata']
-    functions = response['Functions']
+def get_all_lambdas(response_list_functions):
+    response_metadata = response_list_functions['ResponseMetadata']
+    functions = response_list_functions['Functions']
     function_list = []
 
     if response_metadata['HTTPStatusCode'] == 200:
@@ -36,8 +34,9 @@ def function_list_to_map(function_list):
 def main(aws_profile_name):
     session = boto3.Session(profile_name=aws_profile_name, region_name='eu-west-1')
     lambda_client = session.client('lambda')
+    response_list_functions = lambda_client.list_functions()
 
-    function_list = get_all_lambdas(lambda_client)
+    function_list = get_all_lambdas(response_list_functions)
     function_map = function_list_to_map(function_list)
 
     cli_function_select = CLIFunctionSelect(function_list)
@@ -57,11 +56,3 @@ def main(aws_profile_name):
 
         if user_selected_operation == 'Quit':
             break
-
-
-if __name__ == '__main__':
-    parser = argparse.ArgumentParser(description='Cyclops - Optimise your AWS.')
-    parser.add_argument('--profile', help='The AWS profile to optimise.', required=True)
-    args = parser.parse_args()
-
-    main(args.profile)
