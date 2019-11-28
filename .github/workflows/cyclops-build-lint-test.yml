@@ -34,7 +34,7 @@ jobs:
           pip install pytest
           pip install pytest-cov
           pytest
-          pytest --cov=./ --cov-report=xml
+          pytest --cov=./ --cov-report=xml:coverage-reports/coverage.xml
 
       - name: Codecov
         uses: codecov/codecov-action@v1.0.4
